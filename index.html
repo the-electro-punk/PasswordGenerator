@@ -7,5 +7,22 @@
     <link rel="stylesheet" src="C:\Users\Ben\Desktop\_Coding BootCamp\_weeks lessons\week 3\week 3 challenge\PasswordGenerator\assets\css\passGen.css">
 </head>
 <body>
+    <div class="container">
+        <h1>Password Generator</h1>
+        <h3>password</h3>
+        <form>
+            <label for='CHRnumber'>Number of Characters</label>
+            <input type="range" min="8" max="20" value="10" id='CHRrange'>
+            <input type="number" min="8" max="20" value="10" id='CHRnumber'>
 
+            <label for="includeUpper">Include Uppercase</label>
+            <input type="checkbox" id="includeUpper">
+            <label for="includeNumber">Include Numbers</label>
+            <input type="checkbox" id="includeNumber">
+            <label for="includeSymbol">Include Symbols</label>
+            <input type="checkbox" id="includeSymbol">
+
+            <button type="submit">Generate Password</button>
+        </form>
+    </div>
 </body>
