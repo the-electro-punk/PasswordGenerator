@@ -1,3 +1,72 @@
 body {
     background-color:darkblue;
+    color: whitesmoke;
+    margin:0;
+    min-height:100vh;
+    display: flex;
+    justify-content: center;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+.container {
+    background-color:forestgreen;
+    padding: 3rem;
+    margin: auto auto;
+    border-radius:1rem;
+    border: 5px solid lime;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form {
+   display: flex;
+   flex-direction: column;
+   row-gap: 1rem;
+}
+
+.title {
+    margin: 0;
+    text-align:center;
+}
+
+label {
+    font-weight: bold;
+}
+.CHRcontainer {
+    display: flex;
+    align-items:center;
+}
+
+.numberInput {
+    width:2rem;
+}
+
+.password-Box {
+    background-color: whitesmoke;
+    color: black;
+    padding: 1rem;
+    border: 2px solid black;
+    height: 2rem;
+    width: 350px;
+    justify-content: center;
+    align-items: center;
+    word-break:break-all;
+    border-radius: 5px;
+}
+
+.btn {
+    color:whitesmoke;
+    grid-column:span 2;
+    background-color: transparent;
+    border: 2.5px solid whitesmoke;
+    padding: .5rem 1rem;
+    font-weight:bold;
+    cursor:pointer;
+    border-radius: 1rem;
+}
+
+.btn:hover {
+    background-color: rgb(8, 129, 8);
 }
