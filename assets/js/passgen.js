@@ -1,37 +1,59 @@
-// Dom elements
-const resultEl = document.getElementById('result');
-const lengthEl = document.getElementById('length');
-const uppercaseEl = document.getElementById('uppercase');
-const lowercaseEl = document.getElementById('lowercase');
-const numbersEl = document.getElementById('numbers');
-const symbolsEl = document.getElementById('symbols');
-const generateEl = document.getElementById('generate');
-const clipboardEl = document.getElementById('clipboard');
+const CHRrangeEl = document.getElementById('CHRrange')
+const CHRnumberEl = document.getElementById('CHRnumber')
 
-const randomFunc = {
-    lower: getRandomLower,
-    upper: getRandomUpper,
-    number: getRandomNumber,
-    symbol: getRandomSymbol
+const includeUpperEl = document.getElementById('includeUpper')
+const includeNumberEl = document.getElementById('includeNumber')
+const includeSymbolEl = document.getElementById('includeSymbol')
+const formEl = document.getElementById('passwordGenerate')
+
+const passwordDisplayEl = document.getElementById('passwordDisplay')
+
+const UPPERCASE_CharCode = arrayHighLow(65, 90)
+const LOWERCASE_CharCode = arrayHighLow(97,122)
+const NUMBER_CharCode = arrayHighLow(48,57)
+const Symbol_CharCode = arrayHighLow(33,47).concat(arrayHighLow(58, 64)).concat(arrayHighLow(91,96)).concat(arrayHighLow(123,126))
+
+CHRnumberEl.addEventListener('input', syncCHRAmount)
+CHRrangeEl.addEventListener('input', syncCHRAmount)
+
+formEl.addEventListener('submit', e => {
+    e.preventDefault()
+    const CHRamountEl = CHRnumberEl.value
+    const UpperEl =includeUpperEl.checked
+    const NumberEl =includeNumberEl.checked
+    const SymbolEl =includeSymbolEl.checked
+    const password = generatePassword(CHRamountEl, UpperEl, NumberEl, SymbolEl)
+    passwordDisplayEl.innerText = password
+    console.log("new password is " + password)
+})
+
+function generatePassword(CHRamountEl, UpperEl, NumberEl, SymbolEl) {
+    let charcodes = LOWERCASE_CharCode
+    if (UpperEl) charcodes = charcodes.concat(UPPERCASE_CharCode)
+    if (NumberEl) charcodes = charcodes.concat(NUMBER_CharCode)
+    if (SymbolEl) charcodes = charcodes.concat(Symbol_CharCode)
+    console.log(UPPERCASE_CharCode)
+    console.log(LOWERCASE_CharCode) 
+    
+    const passwordCHRs = []
+    for(let i = 0; i < CHRamountEl; i++) {
+    const character = charcodes[Math.floor(Math.random() * charcodes.length)]
+        passwordCHRs.push(String.fromCharCode(character))
+        console.log(passwordCHRs)
+    }
+    return passwordCHRs.join('')
 }
 
-// generator functions
-
-function getRandomLower() {
-    return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+function arrayHighLow(low, high) {
+    const array = []
+    for (let i = low; i <= high; i++) {
+        array.push(i)
+    }
+    return array
 }
-function getRandomUpper() {
-    return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+   
+function syncCHRAmount(e) {
+    const valueEl= e.target.value
+    CHRrangeEl.value = valueEl
+    CHRnumberEl.value = valueEl
 }
-function getRandomNumber() {
-    return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
-}
-function getRandomSymbol() {
-    const symbols = '!@#$%^&*()[]=<>,.';
-    return symbols[Math.floor(Math.random() * symbols.length)];
-}
-
-console.log(getRandomLower());
-console.log(getRandomUpper());
-console.log(getRandomNumber());
-console.log(getRandomSymbol());
