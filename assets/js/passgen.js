@@ -28,12 +28,14 @@ formEl.addEventListener('submit', e => {
 })
 
 function generatePassword(CHRamountEl, UpperEl, NumberEl, SymbolEl) {
+   
     let charcodes = LOWERCASE_CharCode
+    console.log(charcodes)
     if (UpperEl) charcodes = charcodes.concat(UPPERCASE_CharCode)
     if (NumberEl) charcodes = charcodes.concat(NUMBER_CharCode)
     if (SymbolEl) charcodes = charcodes.concat(Symbol_CharCode)
     console.log(UPPERCASE_CharCode)
-    console.log(LOWERCASE_CharCode) 
+    console.log(LOWERCASE_CharCode)
     
     const passwordCHRs = []
     for(let i = 0; i < CHRamountEl; i++) {
@@ -52,8 +54,23 @@ function arrayHighLow(low, high) {
     return array
 }
    
-function syncCHRAmount(e) {
-    const valueEl= e.target.value
+function syncCHRAmount(event) {
+    const valueEl= event.target.value
     CHRrangeEl.value = valueEl
     CHRnumberEl.value = valueEl
 }
+
+
+
+const questions = [{
+questionOne: "What is your favorite color",
+questionTwo: "Who is your quest?"
+}]
+
+console.log(questions.map((el) => {
+    return el.questionOne
+}))
+
+console.log(questions.forEach((questionEl) => {
+    return questionEl
+}))
